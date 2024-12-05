@@ -752,7 +752,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   --  Add plugins to `lua/custom/plugins/*.lua`:
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If using a Nerd Font: set icons to an empty table which will use the
