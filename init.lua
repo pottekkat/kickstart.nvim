@@ -4,8 +4,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
--- false because I don't want icons everywhere
+-- Set to true if a Nerd Font is installed and selected in the terminal
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -16,6 +15,8 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- Use relative line numbers
 vim.opt.relativenumber = true
+-- Show mark at 80 columns
+vim.opt.colorcolumn = '80'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
