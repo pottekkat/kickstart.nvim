@@ -15,8 +15,6 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- Use relative line numbers
 vim.opt.relativenumber = true
--- Show mark at 80 columns
-vim.opt.colorcolumn = '80'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -79,6 +77,16 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Toggle column width color
+-- Not sure why the LSP throws an error here, but it works fine.
+vim.keymap.set('n', '<leader>tc', function()
+  if vim.opt.colorcolumn:get()[1] == '80' then
+    vim.opt.colorcolumn = ''
+  else
+    vim.opt.colorcolumn = '80'
+  end
+end, { desc = '[T]oggle Column [C]olor' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -588,6 +596,12 @@ require('lazy').setup({
             end,
           },
         },
+        config = function()
+          -- Load custom snippets
+          require('luasnip.loaders.from_lua').lazy_load {
+            paths = { vim.fn.stdpath 'config' .. '/lua/snippets' },
+          }
+        end,
       },
       'saadparwaiz1/cmp_luasnip',
 
